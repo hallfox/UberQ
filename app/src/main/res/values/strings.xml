@@ -4,4 +4,9 @@
     <string name="title_activity_web_view">WebViewActivity</string>
 
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_start_game">StartGameActivity</string>
+    <string name="title_activity_join_game">JoinGameActivity</string>
+    <string name="title_activity_quiz">QuizActivity</string>
+    <string name="title_activity_results">ResultsActivity</string>
+    <string name="title_activity_maps">Map</string>
 </resources>
