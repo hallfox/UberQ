@@ -26,12 +26,9 @@ public class WebViewActivity extends Activity {
 
     public static final String UBER_OAUTH_URL = "https://login.uber.com/oauth/authorize?client_id=SL6ETlvv7NQlcHLopkukvdQ_IUYDjsQw&response_type=code&scope=profile";
     public static final String UBER_LOGIN_URL = "https://login.uber.com/login";
-    public static final String AWS_URL = "http://uberq-dev.elasticbeanstalk.com/uberauth";
-
     GoogleCloudMessaging gcm;
     String regid;
     String uberID;
-    public static final String PROJECT_NUMBER = "232607746977";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,7 +87,7 @@ public class WebViewActivity extends Activity {
                     if (gcm == null) {
                         gcm = GoogleCloudMessaging.getInstance(getApplicationContext());
                     }
-                    regid = gcm.register(PROJECT_NUMBER);
+                    regid = gcm.register(Constants.PROJECT_NUMBER);
                     msg = "Device registered, registration ID=" + regid;
                 } catch (IOException ex) {
                     msg = "Error :" + ex.getMessage();
@@ -108,7 +105,7 @@ public class WebViewActivity extends Activity {
 
     public void sendIDsAWS(String uberCode, String gcmID){
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(AWS_URL)
+                .baseUrl(Constants.AWS_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         UberAuthRequest service = retrofit.create(UberAuthRequest.class);
@@ -116,16 +113,14 @@ public class WebViewActivity extends Activity {
         oauthCall.enqueue(new Callback<OAuthResponse>() {
             @Override
             public void onResponse(Response<OAuthResponse> response) {
-                OAuthResponse oauth = response.body();
-                String joinCode = oauth.joinCode;
-                Intent intent = new Intent(getApplicationContext(), StartGameActivity.class);
-                intent.putExtra("join_code", joinCode);
-                startActivity(intent);
+                //Intent intent = new Intent(getApplicationContext(), StartGameActivity.class);
+                //startActivity(intent);
+                finish();
             }
 
             @Override
             public void onFailure(Throwable t) {
-
+                finish();
             }
         });
     }

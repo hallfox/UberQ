@@ -3,7 +3,7 @@
     package="hack.bigred15.uberquiz" >
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.wake_lock" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 
     <permission
@@ -41,6 +41,7 @@
 
         <activity
             android:name=".MainActivity"
+            android:screenOrientation="portrait"
             android:label="" >
             <intent-filter android:label="UberQ" >
                 <action android:name="android.intent.action.MAIN" />
@@ -50,6 +51,7 @@
         </activity>
         <activity
             android:name=".WebViewActivity"
+            android:screenOrientation="portrait"
             android:label=""
             android:parentActivityName=".MainActivity" >
             <meta-data
@@ -58,10 +60,16 @@
         </activity>
         <activity
             android:name=".StartGameActivity"
-            android:label="" >
+            android:screenOrientation="portrait"
+            android:label=""
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="hack.bigred15.uberquiz.MainActivity"/>
         </activity>
         <activity
             android:name=".JoinGameActivity"
+            android:screenOrientation="portrait"
             android:label=""
             android:parentActivityName=".MainActivity" >
             <meta-data
@@ -70,10 +78,12 @@
         </activity>
         <activity
             android:name=".QuizActivity"
+            android:screenOrientation="portrait"
             android:label="" >
         </activity>
         <activity
             android:name=".ResultsActivity"
+            android:screenOrientation="portrait"
             android:label="" >
         </activity>
 

@@ -1,9 +1,11 @@
 package hack.bigred15.uberquiz;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class ResultsActivity extends AppCompatActivity {
 
@@ -11,6 +13,13 @@ public class ResultsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
+        Intent intent = getIntent();
+        String winner = intent.getStringExtra("winner");
+        String amountOwed = intent.getStringExtra("amountOwed");
+        TextView winnerView = (TextView)findViewById(R.id.winner);
+        TextView amountView = (TextView)findViewById(R.id.amount_to_pay);
+        winnerView.setText(winner);
+        amountView.setText(amountOwed);
     }
 
     @Override
